@@ -8,8 +8,5 @@
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
-	},
-	"query": "{\n  Raw(columns: [\"ts\", \"a0\", \"a1\"], from: 1688384846866, to: 1688471120908, sid: \"92d31000-7846-11ec-814a-02420a0001bc\") {\n    data\n  }\n}\n",
-	"variables": null,
-	"operationName": ""
+	}
 }
