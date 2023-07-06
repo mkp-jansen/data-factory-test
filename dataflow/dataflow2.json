@@ -1,0 +1,35 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureDataExplorerTable_samples",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"name": "source2"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          sample_id as string,",
+				"          Timestamp as timestamp,",
+				"          channel_id as string,",
+				"          value as double",
+				"     ),",
+				"     allowSchemaDrift: false,",
+				"     validateSchema: true,",
+				"     format: 'table') ~> source1",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> source2"
+			]
+		}
+	}
+}

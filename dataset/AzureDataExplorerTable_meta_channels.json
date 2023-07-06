@@ -1,5 +1,5 @@
 {
-	"name": "AzureDataExplorerTable_samples",
+	"name": "AzureDataExplorerTable_meta_channels",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataExplorer1",
@@ -26,7 +26,7 @@
 			}
 		],
 		"typeProperties": {
-			"table": "samples"
+			"table": "meta_channels"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

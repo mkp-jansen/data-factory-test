@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "AzureDataExplorerTable1",
+						"referenceName": "AzureDataExplorerTable_samples",
 						"type": "DatasetReference"
 					},
 					"name": "ADX"
