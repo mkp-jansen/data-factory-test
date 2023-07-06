@@ -1,0 +1,33 @@
+{
+	"name": "AzureDataExplorerTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataExplorer3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureDataExplorerTable",
+		"schema": [
+			{
+				"name": "sample_id",
+				"type": "guid"
+			},
+			{
+				"name": "Timestamp",
+				"type": "datetime"
+			},
+			{
+				"name": "channel_id",
+				"type": "guid"
+			},
+			{
+				"name": "value",
+				"type": "real"
+			}
+		],
+		"typeProperties": {
+			"table": "samples_test"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

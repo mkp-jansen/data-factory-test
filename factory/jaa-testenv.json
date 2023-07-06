@@ -1,0 +1,9 @@
+{
+	"name": "jaa-testenv",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e800d62d-ed32-416c-8cf2-4e25ad4de9c2",
+		"tenantId": "ab268b5e-9f71-474d-9935-13dafaea4fc2"
+	}
+}

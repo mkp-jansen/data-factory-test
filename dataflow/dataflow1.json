@@ -1,0 +1,57 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureDataExplorerTable1",
+						"type": "DatasetReference"
+					},
+					"name": "ADX"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureDataExplorerTable2",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "scaled"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          sample_id as string,",
+				"          Timestamp as timestamp,",
+				"          channel_id as string,",
+				"          value as double",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
+				"     limit: 100,",
+				"     timeout: 1,",
+				"     format: 'table') ~> ADX",
+				"ADX derive(value = value * 2 + 1) ~> scaled",
+				"scaled sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          sample_id as string,",
+				"          Timestamp as timestamp,",
+				"          channel_id as string,",
+				"          value as double",
+				"     ),",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}
