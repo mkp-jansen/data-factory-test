@@ -39,7 +39,7 @@
 				"     limit: 100,",
 				"     timeout: 1,",
 				"     format: 'table') ~> ADX",
-				"ADX derive(value = value * 2 + 1) ~> scaled",
+				"ADX derive(value = value * 2 + 2) ~> scaled",
 				"scaled sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
