@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "jaa-testenv"
+		},
+		"AzureDataExplorer2_servicePrincipalKey": {
+			"value": ""
+		},
+		"AzureDataExplorer1_properties_typeProperties_endpoint": {
+			"value": "https://adxmain01.westeurope.kusto.windows.net"
+		},
+		"AzureDataExplorer1_properties_typeProperties_database": {
+			"value": "05325_01_Grevenhofschleusenbrücke_Hamburg"
+		},
+		"AzureDataExplorer2_properties_typeProperties_endpoint": {
+			"value": "https://adxmain01.westeurope.kusto.windows.net"
+		},
+		"AzureDataExplorer2_properties_typeProperties_tenant": {
+			"value": "ab268b5e-9f71-474d-9935-13dafaea4fc2"
+		},
+		"AzureDataExplorer2_properties_typeProperties_servicePrincipalId": {
+			"value": "054e27ad-0e76-46fd-bfe7-4b83dd7fa1d3"
+		},
+		"AzureDataExplorer2_properties_typeProperties_database": {
+			"value": "testDB2"
+		},
+		"AzureDataExplorer3_properties_typeProperties_endpoint": {
+			"value": "https://adxmain01.westeurope.kusto.windows.net"
+		},
+		"AzureDataExplorer3_properties_typeProperties_database": {
+			"value": "testDB2"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

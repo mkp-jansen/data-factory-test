@@ -1,0 +1,105 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory-Name",
+			"defaultValue": "jaa-testenv"
+		},
+		"AzureDataExplorer2_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Sichere Zeichenfolge für \"servicePrincipalKey\" von \"AzureDataExplorer2\""
+		},
+		"AzureDataExplorer1_properties_typeProperties_endpoint": {
+			"type": "string",
+			"defaultValue": "https://adxmain01.westeurope.kusto.windows.net"
+		},
+		"AzureDataExplorer1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "05325_01_Grevenhofschleusenbrücke_Hamburg"
+		},
+		"AzureDataExplorer2_properties_typeProperties_endpoint": {
+			"type": "string",
+			"defaultValue": "https://adxmain01.westeurope.kusto.windows.net"
+		},
+		"AzureDataExplorer2_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "ab268b5e-9f71-474d-9935-13dafaea4fc2"
+		},
+		"AzureDataExplorer2_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "054e27ad-0e76-46fd-bfe7-4b83dd7fa1d3"
+		},
+		"AzureDataExplorer2_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "testDB2"
+		},
+		"AzureDataExplorer3_properties_typeProperties_endpoint": {
+			"type": "string",
+			"defaultValue": "https://adxmain01.westeurope.kusto.windows.net"
+		},
+		"AzureDataExplorer3_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "testDB2"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI für Speicherkonto mit verknüpften ARM-Vorlagen"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "SAS-Token für Speicherkonto mit verknüpften ARM-Vorlagen"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "jaa-testenv_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataExplorer2_servicePrincipalKey": {
+						"value": "[parameters('AzureDataExplorer2_servicePrincipalKey')]"
+					},
+					"AzureDataExplorer1_properties_typeProperties_endpoint": {
+						"value": "[parameters('AzureDataExplorer1_properties_typeProperties_endpoint')]"
+					},
+					"AzureDataExplorer1_properties_typeProperties_database": {
+						"value": "[parameters('AzureDataExplorer1_properties_typeProperties_database')]"
+					},
+					"AzureDataExplorer2_properties_typeProperties_endpoint": {
+						"value": "[parameters('AzureDataExplorer2_properties_typeProperties_endpoint')]"
+					},
+					"AzureDataExplorer2_properties_typeProperties_tenant": {
+						"value": "[parameters('AzureDataExplorer2_properties_typeProperties_tenant')]"
+					},
+					"AzureDataExplorer2_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('AzureDataExplorer2_properties_typeProperties_servicePrincipalId')]"
+					},
+					"AzureDataExplorer2_properties_typeProperties_database": {
+						"value": "[parameters('AzureDataExplorer2_properties_typeProperties_database')]"
+					},
+					"AzureDataExplorer3_properties_typeProperties_endpoint": {
+						"value": "[parameters('AzureDataExplorer3_properties_typeProperties_endpoint')]"
+					},
+					"AzureDataExplorer3_properties_typeProperties_database": {
+						"value": "[parameters('AzureDataExplorer3_properties_typeProperties_database')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
