@@ -97,43 +97,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/AzureDataExplorerTable1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureDataExplorer1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureDataExplorerTable",
-				"schema": [
-					{
-						"name": "sample_id",
-						"type": "guid"
-					},
-					{
-						"name": "Timestamp",
-						"type": "datetime"
-					},
-					{
-						"name": "channel_id",
-						"type": "guid"
-					},
-					{
-						"name": "value",
-						"type": "real"
-					}
-				],
-				"typeProperties": {
-					"table": "samples"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureDataExplorer1')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/AzureDataExplorerTable2')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -171,6 +134,80 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataExplorerTable_meta_channels')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataExplorer1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureDataExplorerTable",
+				"schema": [
+					{
+						"name": "sample_id",
+						"type": "guid"
+					},
+					{
+						"name": "Timestamp",
+						"type": "datetime"
+					},
+					{
+						"name": "channel_id",
+						"type": "guid"
+					},
+					{
+						"name": "value",
+						"type": "real"
+					}
+				],
+				"typeProperties": {
+					"table": "meta_channels"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataExplorer1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataExplorerTable_samples')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataExplorer1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureDataExplorerTable",
+				"schema": [
+					{
+						"name": "sample_id",
+						"type": "guid"
+					},
+					{
+						"name": "Timestamp",
+						"type": "datetime"
+					},
+					{
+						"name": "channel_id",
+						"type": "guid"
+					},
+					{
+						"name": "value",
+						"type": "real"
+					}
+				],
+				"typeProperties": {
+					"table": "samples"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataExplorer1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
@@ -180,7 +217,7 @@
 					"sources": [
 						{
 							"dataset": {
-								"referenceName": "AzureDataExplorerTable1",
+								"referenceName": "AzureDataExplorerTable_samples",
 								"type": "DatasetReference"
 							},
 							"name": "ADX"
@@ -229,7 +266,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/AzureDataExplorerTable1')]",
+				"[concat(variables('factoryId'), '/datasets/AzureDataExplorerTable_samples')]",
 				"[concat(variables('factoryId'), '/datasets/AzureDataExplorerTable2')]"
 			]
 		},
@@ -317,7 +354,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
