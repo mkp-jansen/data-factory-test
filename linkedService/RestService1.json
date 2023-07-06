@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "https://mkp.gi-cloud.io/gqlui/?",
+			"url": "https://mkp.gi-cloud.io/",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
