@@ -3,39 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Web1",
-				"type": "WebActivity",
-				"dependsOn": [
-					{
-						"activity": "Set variable1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"url": "https://mkp.gi-cloud.io/gqlui/?",
-					"method": "POST",
-					"headers": {
-						"Cookie": "gicloud_token"
-					},
-					"body": {
-						"value": "@variables('start')",
-						"type": "Expression"
-					}
-				}
-			},
-			{
-				"name": "Set variable1",
-				"type": "SetVariable",
+				"name": "Copy data1",
+				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -46,9 +15,34 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "start",
-					"value": "1688384846866"
-				}
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "POST",
+						"requestBody": "{\n\"query\":\"{  Raw(columns: [\\\"ts\\\", \\\"a0\\\", \\\"a1\\\"], from: 1688384846866, to: 1688471120908, sid: \\\"92d31000-7846-11ec-814a-02420a0001bc\\\") {   data  }}\",\n\"variables\":null,\n\"operationName\":\"\"\n}",
+						"additionalHeaders": {
+							"Cookie": "gicloud_token",
+							"Content-Type": "application/json"
+						}
+					},
+					"sink": {
+						"type": "AzureDataExplorerSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "RestResource1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureDataExplorerTable2",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"variables": {
